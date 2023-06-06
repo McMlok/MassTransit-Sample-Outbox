@@ -80,9 +80,12 @@ builder.Services.AddMassTransit(x =>
         o.UseBusOutbox();
     });
 
-    x.UsingRabbitMq((_, cfg) =>
+    //x.UsingRabbitMq((_, cfg) =>
+    x.UsingActiveMq((_, cfg) =>
     {
-        cfg.AutoStart = true;
+      //cfg.AutoStart = true;
+      cfg.ClearSerialization();
+      cfg.UseRawJsonSerializer();
     });
 });
 

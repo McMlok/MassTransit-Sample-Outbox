@@ -38,6 +38,9 @@ public class RegistrationService :
             MemberId = registration.MemberId,
             EventId = registration.EventId,
             Payment = payment
+        }, context =>
+        {
+          context.Headers.Set("testHeader", Guid.NewGuid().ToString());
         });
 
         try

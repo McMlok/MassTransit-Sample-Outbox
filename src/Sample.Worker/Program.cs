@@ -82,10 +82,11 @@ var host = Host.CreateDefaultBuilder(args)
                     r.UsePostgres();
                 });
 
-            x.UsingRabbitMq((context, cfg) =>
-            {
+          //x.UsingRabbitMq((context, cfg) =>
+          x.UsingActiveMq((context, cfg) =>
+          {
                 cfg.ConfigureEndpoints(context);
-            });
+          });
         });
     })
     .UseSerilog()
